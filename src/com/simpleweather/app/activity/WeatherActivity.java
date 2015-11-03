@@ -1,5 +1,6 @@
 package com.simpleweather.app.activity;
 import com.simpleweather.app.R;
+import com.simpleweather.app.service.AutoUpdateService;
 import com.simpleweather.app.util.HttpCallbackListener;
 import com.simpleweather.app.util.HttpUtil;
 import com.simpleweather.app.util.Utility;
@@ -72,7 +73,8 @@ public class WeatherActivity extends Activity implements OnClickListener {
 		currentDateText.setText(prefs.getString("current_date", ""));
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameText.setVisibility(View.VISIBLE);
-		
+		Intent intent = new Intent(this, AutoUpdateService.class);
+		startService(intent);
 	}
 
 	private void queryWeatherCode(String countyCode) {
